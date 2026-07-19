@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>标策 BidProof · Kimi 版 — 政府 IT 投标决策与响应工作台</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- 新手引导弹窗 -->
+<div class="onboarding" id="onboarding">
+  <div class="onboarding-card">
+    <div class="ob-brand">标策 BidProof <span class="kimi-badge">Kimi 版</span></div>
+    <h1>你将以示例企业的身份，<br>体验一次完整的投标决策与响应流程</h1>
+    <p class="ob-sub">以下所有招标文件均来自真实政府采购项目解析，企业档案为演示合成数据。</p>
+    <div class="ob-enterprise">
+      <div class="ob-avatar">澄</div>
+      <div>
+        <div class="ob-ent-name">北京澄明数智科技有限公司</div>
+        <div class="ob-ent-meta">78 人 · 软件开发 / 应用运维 · 京津冀 · 合同区间 50–500 万</div>
+      </div>
+      <span class="ob-tag">示例企业档案</span>
+    </div>
+    <div class="ob-steps">
+      <div class="ob-step"><b>1</b><div><strong>雷达筛标</strong><span>候选 ≠ 推荐投标，先看清楚再投入</span></div></div>
+      <div class="ob-step"><b>2</b><div><strong>证据决策</strong><span>每项要求 Pass / Fail / Unknown，结论可回查原文</span></div></div>
+      <div class="ob-step"><b>3</b><div><strong>响应成稿</strong><span>矩阵驱动初稿，没有证据的字一个都不写</span></div></div>
+    </div>
+    <button class="btn-primary btn-lg" onclick="closeOnboarding()">以澄明数智身份进入工作台</button>
+    <div class="ob-foot">演示环境 · 会话内模拟 · 不包含生产 AI 与真实客户数据</div>
+  </div>
+</div>
+
+<div class="app">
+
+  <!-- 侧边导航 -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-name">标策 BidProof</div>
+      <div class="brand-suffix">Kimi 版 · 概念原型</div>
+    </div>
+    <nav class="nav" id="nav">
+      <div class="nav-group">企业</div>
+      <a class="nav-item" data-view="workspace"><span class="nav-ico">◈</span>企业工作区</a>
+      <div class="nav-group">投前决策</div>
+      <a class="nav-item" data-view="radar"><span class="nav-ico">◎</span>项目雷达</a>
+      <a class="nav-item" data-view="intake"><span class="nav-ico">▤</span>预筛与文件</a>
+      <a class="nav-item" data-view="requirements"><span class="nav-ico">☰</span>要求解析</a>
+      <a class="nav-item" data-view="decision"><span class="nav-ico">⚖</span>决策中心<span class="nav-dot" id="navDotDecision"></span></a>
+      <div class="nav-group">投中响应</div>
+      <a class="nav-item" data-view="tasks"><span class="nav-ico">✓</span>证据任务<span class="nav-count" id="navTaskCount">5</span></a>
+      <a class="nav-item" data-view="matrix"><span class="nav-ico">▦</span>响应矩阵</a>
+      <a class="nav-item" data-view="chapter"><span class="nav-ico">✎</span>样章工作室</a>
+      <a class="nav-item" data-view="gate"><span class="nav-ico">⛨</span>合规 Gate</a>
+    </nav>
+    <div class="guide" id="guide">
+      <div class="guide-title">体验路径 <span id="guideProgress">0/6</span></div>
+      <div class="guide-bar"><i id="guideBar"></i></div>
+      <ol id="guideList">
+        <li data-step="radar">雷达：候选不是推荐</li>
+        <li data-step="d02">D02：硬条件 No-Bid 与反事实</li>
+        <li data-step="d04">D04：Conditional 决策</li>
+        <li data-step="tasks">处理 5 个 Unknown 任务</li>
+        <li data-step="matrix">28 行响应矩阵与样章</li>
+        <li data-step="gate">四道 Gate 与评审包</li>
+      </ol>
+    </div>
+  </aside>
+
+  <!-- 主区域 -->
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <h2 id="viewTitle">企业工作区</h2>
+        <span class="demo-pill">演示环境 · Kimi 版</span>
+      </div>
+      <div class="ent-switcher" id="entSwitcher">
+        <span class="es-label">当前企业画像</span>
+        <div class="es-pills" id="entPills"></div>
+      </div>
+    </header>
+
+    <div class="content" id="content"></div>
+  </main>
+</div>
+
+<!-- 证据抽屉 -->
+<div class="drawer-mask" id="drawerMask" onclick="closeDrawer()"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div id="drawerTitle">证据详情</div>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script src="data-part2.js"></script>
+<script src="app-part1.js"></script>
+<script src="app-part2.js"></script>
+</body>
+</html>
